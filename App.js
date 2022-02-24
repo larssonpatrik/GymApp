@@ -1,18 +1,22 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import Session from "./components/Session";
 import { useState } from "react";
 import NavigationButton from "./components/NavigationButton";
+import sessions from "./assets/data";
+import SessionList from "./components/SessionList";
+import SessionPage from "./SessionPage";
+
 export default function App() {
-  const [SessionView, setSessionView] = useState("home");
+  const [SessionView, setSessionView] = useState("session");
 
   if (SessionView === "home") {
     return (
       <View style={styles.app}>
         <Text style={styles.logo}>GymApp</Text>
         <Text style={styles.mainText}>Load Session</Text>
-        <Session
+        <SessionList
+          data={sessions}
           onPress={() => setSessionView("session")}
-          text="Pecs Shoulders Triceps"
+          remove={() => alert("removed")}
         />
       </View>
     );
@@ -21,8 +25,7 @@ export default function App() {
   if (SessionView === "session") {
     return (
       <View style={styles.app}>
-        <Text style={styles.logo}>GymApp</Text>
-        <NavigationButton label="back" onPress={() => setSessionView("home")} />
+        <SessionPage data={sessions[0]} />
       </View>
     );
   }

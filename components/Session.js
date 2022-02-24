@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Button, Pressable } from "react-native";
-import { TouchableOpacity } from "react-native-web";
 
 function Session(props) {
   return (
@@ -7,9 +6,9 @@ function Session(props) {
       <Pressable onPress={props.onPress} style={styles.textWrap}>
         <Text style={styles.text}>{props.text}</Text>
       </Pressable>
-      <View style={styles.remove}>
+      <Pressable onPress={props.remove} style={styles.remove}>
         <Text style={styles.X}>X</Text>
-      </View>
+      </Pressable>
     </View>
   );
 }
