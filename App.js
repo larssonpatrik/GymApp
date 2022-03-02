@@ -6,7 +6,7 @@ import SessionList from "./components/SessionList";
 import SessionPage from "./SessionPage";
 
 export default function App() {
-  const [SessionView, setSessionView] = useState("session");
+  const [SessionView, setSessionView] = useState("home");
 
   if (SessionView === "home") {
     return (
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
   },
   mainText: {
     marginTop: 200,
+    marginBottom: 8,
     fontSize: 36,
     color: "white",
   },

@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View, Button, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 function Session(props) {
   return (
     <View style={styles.container}>
       <Pressable onPress={props.onPress} style={styles.textWrap}>
         <Text style={styles.text}>{props.text}</Text>
-      </Pressable>
-      <Pressable onPress={props.remove} style={styles.remove}>
-        <Text style={styles.X}>X</Text>
+        <Text style={styles.textSecond}>
+          {props.data.exercises.length} exercises
+        </Text>
       </Pressable>
     </View>
   );
@@ -18,32 +18,23 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    marginBottom: 20,
   },
   textWrap: {
     display: "flex",
     justifyContent: "center",
-    width: 250,
-    height: 50,
-    backgroundColor: "#77D668",
-    borderBottomLeftRadius: 5,
-    borderTopLeftRadius: 5,
+    width: 350,
+    backgroundColor: "#2C2C2C",
+    padding: 15,
+    borderRadius: 5,
   },
   text: {
-    fontSize: 18,
-    marginLeft: 15,
+    fontSize: 20,
+    color: "white",
   },
-  remove: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: 50,
-    width: 50,
-    backgroundColor: "#A9A9A9",
-    borderBottomRightRadius: 5,
-    borderTopRightRadius: 5,
-  },
-  X: {
-    fontSize: 22,
+  textSecond: {
+    fontSize: 16,
+    color: "gray",
   },
 });
 

@@ -1,8 +1,13 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
 
 export default function ExerciseCard(props) {
+  const iteratorArray = Array(props.currentSet).fill(1);
+  const iteratorArray2 = Array(
+    props.data.exercises[props.currentExercise].weight.length - props.currentSet
+  ).fill(1);
+
   return (
-    <View>
+    <View style={styles.wrapper}>
       <View style={styles.exerciseCard}>
         <View style={styles.upper}>
           <Text style={styles.upperText}>
@@ -25,16 +30,27 @@ export default function ExerciseCard(props) {
             <Text style={styles.nextSet}>Next set</Text>
           </Pressable>
         </View>
+        <View style={styles.status}>
+          {iteratorArray.map((i) => (
+            <View style={styles.statusBarActive}></View>
+          ))}
+          {iteratorArray2.map((i) => (
+            <View style={styles.statusBar}></View>
+          ))}
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    marginTop: 200,
+  },
   exerciseCard: {
     display: "flex",
     justifyContent: "center",
-    marginTop: 200,
+    alignItems: "center",
     width: 350,
     backgroundColor: "#2C2C2C",
     borderRadius: 8,
@@ -43,6 +59,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    width: "100%",
     paddingTop: 18,
     paddingLeft: 18,
     paddingRight: 18,
@@ -55,9 +72,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    width: "100%",
     alignItems: "center",
     marginTop: 8,
-    paddingBottom: 18,
     paddingLeft: 18,
     paddingRight: 18,
   },
@@ -68,5 +85,25 @@ const styles = StyleSheet.create({
   nextSet: {
     fontSize: 32,
     color: "gray",
+  },
+  status: {
+    width: 50,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 8,
+    marginBottom: 18,
+  },
+  statusBar: {
+    width: 8,
+    height: 8,
+    backgroundColor: "gray",
+    borderRadius: 2,
+  },
+  statusBarActive: {
+    width: 8,
+    height: 8,
+    backgroundColor: "#7CFF7F",
+    borderRadius: 2,
   },
 });

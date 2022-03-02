@@ -5,8 +5,8 @@ function SessionList(props) {
     <Session
       text={session.label}
       onPress={props.onPress}
-      remove={props.remove}
-      handler={props.handler}
+      session={session.name}
+      data={session}
     />
   ));
 }
